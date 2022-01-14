@@ -16,7 +16,7 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Pong')
 
 
-def ball():
+def move_ball():
     global ball_speed_x, ball_speed_y
 
     ball.x += ball_speed_x
@@ -55,16 +55,16 @@ while True:
             pygame.quit()
             sys.exit()
         if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:
+                player_speed -= 7
             if event.key == pygame.K_DOWN:
                 player_speed += 7
-            if event.key == pygame.K_DOWN:
-                player_speed -= 7
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_DOWN:
                 player_speed -= 7
             if event.key == pygame.K_UP:
                 player_speed += 7
-    ball()
+    move_ball()
     player.y += player_speed
     # visuals
     screen.fill(White)
