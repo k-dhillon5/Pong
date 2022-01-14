@@ -31,13 +31,24 @@ def move_ball():
         ball_speed_x *= -1
 
 
-def player():
+def move_player():
     player.y += player_speed
 
     if player.top <= 0:
         player.top = 0
     if player.bottom >= screen_height:
         player.bottom = screen_height
+
+
+def auto_opp():
+    if opponent.top < ball.y:
+        opponent.top += opponent_speed
+    if opponent.bottom > ball.y:
+        opponent.bottom -= opponent_speed
+    if opponent.top <= 0:
+        opponent.top = 0
+    if opponent.bottom >= screen_height:
+        opponent.bottom = screen_height
 
 
 # platforms
@@ -48,6 +59,7 @@ opponent = pygame.Rect(10, screen_height/2 - 70, 10, 140)
 ball_speed_x = 7
 ball_speed_y = 7
 player_speed = 0
+opponent_speed = 7
 
 while True:
     for event in pygame.event.get():
@@ -65,7 +77,8 @@ while True:
             if event.key == pygame.K_UP:
                 player_speed += 7
     move_ball()
-    player.y += player_speed
+    move_player()
+    auto_opp()
     # visuals
     screen.fill(White)
     pygame.draw.rect(screen, Teal, player)
