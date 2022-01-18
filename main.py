@@ -56,8 +56,8 @@ ball = pygame.Rect(screen_width/2 - 15, screen_height/2 - 15, 30, 30)
 player = pygame.Rect(screen_width - 20, screen_width/2 - 30, 10, 140)
 opponent = pygame.Rect(10, screen_height/2 - 70, 10, 140)
 
-ball_speed_x = 7
-ball_speed_y = 7
+ball_speed_x = 6
+ball_speed_y = 6
 player_speed = 0
 opponent_speed = 7
 
@@ -68,14 +68,14 @@ while True:
             sys.exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
-                player_speed -= 7
+                player_speed -= 6
             if event.key == pygame.K_DOWN:
-                player_speed += 7
+                player_speed += 6
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_DOWN:
-                player_speed -= 7
+                player_speed -= 6
             if event.key == pygame.K_UP:
-                player_speed += 7
+                player_speed += 6
     move_ball()
     move_player()
     auto_opp()
